@@ -12,22 +12,22 @@ function calcularValorFinal() {
   var bandeira = document.getElementById('bandeira').value;
   var taxa = 0;
 
-  // Definir a taxa com base na bandeira do cartão
+  // Definir a taxa com base na bandeira do cartão e número de parcelas
   switch (bandeira) {
     case 'visa':
-      taxa = 0.05; // 5% de taxa para Visa
+      taxa = 0.05 + (parcelas - 1) * 0.01; // 5% + 1% por parcela adicional
       break;
     case 'mastercard':
-      taxa = 0.06; // 6% de taxa para MasterCard
+      taxa = 0.06 + (parcelas - 1) * 0.01; // 6% + 1% por parcela adicional
       break;
     case 'elo':
-      taxa = 0.07; // 7% de taxa para Elo
+      taxa = 0.07 + (parcelas - 1) * 0.01; // 7% + 1% por parcela adicional
       break;
     case 'banri':
-      taxa = 0.09; // 9% de taxa para Banricompras
+      taxa = 0.09 + (parcelas - 1) * 0.01; // 9% + 1% por parcela adicional
       break;
     default:
-      taxa = 0.05; // Taxa padrão
+      taxa = 0.05 + (parcelas - 1) * 0.01; // Taxa padrão
   }
 
   // Calcular o valor final com acréscimo
