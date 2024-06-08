@@ -4,7 +4,7 @@ function calcularValorFinal() {
   var bandeira = document.getElementById('bandeira').value;
   var taxaTransacao = 0;
   var taxaParcelamento = 0;
-  var tarifaUnica = 2.00;
+  var tarifaUnica = 0;
 
   // Definir a taxa com base na bandeira do cartão
   switch (bandeira) {
@@ -18,12 +18,9 @@ function calcularValorFinal() {
       taxaTransacao = 0.07; // 7% de taxa para Elo
       break;
     case 'banri':
-      if (parcelas <= 6) {
-        taxaTransacao = 0.03; // 3% de taxa fixa para Banricompras até 6 parcelas
-      } else {
-        taxaTransacao = 0.038; // 3.8% de taxa fixa para Banricompras acima de 6 parcelas
-      }
+      taxaTransacao = (parcelas <= 6) ? 0.03 : 0.038; // 3% até 6 parcelas, 3.8% acima de 6 parcelas
       taxaParcelamento = 0.024 * parcelas; // 2.4% por mês para cada parcela antecipada
+      tarifaUnica = 2.00; // Taxa única de R$ 2,00
       break;
     default:
       taxaTransacao = 0.05; // Taxa padrão
@@ -37,4 +34,3 @@ function calcularValorFinal() {
   document.getElementById('resultado').innerHTML = 'Valor Final: R$ ' + valorFinal.toFixed(2) + '<br>' +
                                                    'Valor de Cada Parcela: R$ ' + valorParcela.toFixed(2);
 }
-
