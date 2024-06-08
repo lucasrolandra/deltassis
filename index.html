@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Calculadora de Taxa de Cartão de Crédito</title>
-<script>
 function calcularValorFinal() {
   var valorBase = parseFloat(document.getElementById('valorBase').value);
   var parcelas = parseInt(document.getElementById('parcelas').value);
@@ -27,21 +26,21 @@ function calcularValorFinal() {
       break;
     case 'banri':
       taxaTransacao = 0.03; // 3% de taxa fixa para Banricompras
-      taxaParcelamento = 0.024 * parcelas; // 2.4% por mês para cada parcela
+      taxaParcelamento = 0.024 * parcelas; // 2.4% por mês para cada parcela antecipada
       break;
     default:
       taxaTransacao = 0.05; // Taxa padrão
   }
 
   // Calcular o valor final com acréscimo
-  var valorFinal = valorBase * (1 + taxaTransacao) * (1 + taxaParcelamento) + tarifaUnica;
+  var valorFinal = valorBase * (1 + taxaTransacao + taxaParcelamento) + tarifaUnica;
   var valorParcela = valorFinal / parcelas;
 
   // Mostrar os resultados
   document.getElementById('resultado').innerHTML = 'Valor Final: R$ ' + valorFinal.toFixed(2) + '<br>' +
                                                    'Valor de Cada Parcela: R$ ' + valorParcela.toFixed(2);
 }
-</script>
+
 </head>
 <body>
 
