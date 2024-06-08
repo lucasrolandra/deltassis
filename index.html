@@ -2,9 +2,9 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Calculadora de Taxa de Cartão de Crédito</title>
+<script>
 function calcularValorFinal() {
   var valorBase = parseFloat(document.getElementById('valorBase').value);
   var parcelas = parseInt(document.getElementById('parcelas').value);
@@ -25,7 +25,11 @@ function calcularValorFinal() {
       taxaTransacao = 0.07; // 7% de taxa para Elo
       break;
     case 'banri':
-      taxaTransacao = 0.03; // 3% de taxa fixa para Banricompras
+      if (parcelas <= 6) {
+        taxaTransacao = 0.03; // 3% de taxa fixa para Banricompras até 6 parcelas
+      } else {
+        taxaTransacao = 0.038; // 3.8% de taxa fixa para Banricompras acima de 6 parcelas
+      }
       taxaParcelamento = 0.024 * parcelas; // 2.4% por mês para cada parcela antecipada
       break;
     default:
@@ -40,7 +44,7 @@ function calcularValorFinal() {
   document.getElementById('resultado').innerHTML = 'Valor Final: R$ ' + valorFinal.toFixed(2) + '<br>' +
                                                    'Valor de Cada Parcela: R$ ' + valorParcela.toFixed(2);
 }
-
+</script>
 </head>
 <body>
 
@@ -55,15 +59,15 @@ function calcularValorFinal() {
     <option value="1">1x</option>
     <option value="2">2x</option>
     <option value="3">3x</option>
-    <option value="4">4x</option>
-    <option value="5">5x</option>
+	<option value="4">4x</option>
+	<option value="5">5x</option>
     <option value="6">6x</option>
     <option value="7">7x</option>
-    <option value="8">8x</option>
-    <option value="9">9x</option>
+	<option value="8">8x</option>
+	<option value="9">9x</option>
     <option value="10">10x</option>
     <option value="11">11x</option>
-    <option value="12">12x</option>
+	<option value="12">12x</option>
     <!-- Adicione mais opções de parcelas conforme necessário -->
   </select>
 
@@ -72,7 +76,7 @@ function calcularValorFinal() {
     <option value="visa">Visa/Master</option>
     <option value="mastercard">MasterCard</option>
     <option value="elo">Elo</option>
-    <option value="banri">Banricompras</option>
+	<option value="banri">Banricompras</option>
     <!-- Adicione mais bandeiras de cartões conforme necessário -->
   </select>
 
