@@ -1,4 +1,3 @@
-<script>
 function calcularValorFinal() {
   var valorBase = parseFloat(document.getElementById('valorBase').value);
   var parcelas = parseInt(document.getElementById('parcelas').value);
@@ -38,4 +37,4 @@ function calcularValorFinal() {
   document.getElementById('resultado').innerHTML = 'Valor Final: R$ ' + valorFinal.toFixed(2) + '<br>' +
                                                    'Valor de Cada Parcela: R$ ' + valorParcela.toFixed(2);
 }
-</script>
+
