@@ -10,28 +10,31 @@ function calcularValorFinal() {
   var valorBase = parseFloat(document.getElementById('valorBase').value);
   var parcelas = parseInt(document.getElementById('parcelas').value);
   var bandeira = document.getElementById('bandeira').value;
-  var taxa = 0;
+  var taxaTransacao = 0;
+  var taxaParcelamento = 0;
+  var tarifaUnica = 2.00;
 
-  // Definir a taxa com base na bandeira do cartão e número de parcelas
+  // Definir a taxa com base na bandeira do cartão
   switch (bandeira) {
     case 'visa':
-      taxa = 0.05 + (parcelas - 1) * 0.01; // 5% + 1% por parcela adicional
+      taxaTransacao = 0.05; // 5% de taxa para Visa
       break;
     case 'mastercard':
-      taxa = 0.06 + (parcelas - 1) * 0.01; // 6% + 1% por parcela adicional
+      taxaTransacao = 0.06; // 6% de taxa para MasterCard
       break;
     case 'elo':
-      taxa = 0.07 + (parcelas - 1) * 0.01; // 7% + 1% por parcela adicional
+      taxaTransacao = 0.07; // 7% de taxa para Elo
       break;
     case 'banri':
-      taxa = 0.03 + (parcelas - 1) * 0.024; // 9% + 1% por parcela adicional
+      taxaTransacao = 0.03; // 3% de taxa fixa para Banricompras
+      taxaParcelamento = 0.024 * parcelas; // 2.4% por mês para cada parcela
       break;
     default:
-      taxa = 0.05 + (parcelas - 1) * 0.01; // Taxa padrão
+      taxaTransacao = 0.05; // Taxa padrão
   }
 
   // Calcular o valor final com acréscimo
-  var valorFinal = valorBase * (1 + taxa);
+  var valorFinal = valorBase * (1 + taxaTransacao) * (1 + taxaParcelamento) + tarifaUnica;
   var valorParcela = valorFinal / parcelas;
 
   // Mostrar os resultados
