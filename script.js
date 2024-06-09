@@ -34,6 +34,12 @@ function calcularValorFinal() {
       taxaTransacao = 0.05; // Taxa padrão
   }
 
+  // Evitar divisão por zero
+  if (valorBase * (1 - taxaTransacao) === 0) {
+    alert('Erro: A fórmula resulta em uma divisão por zero.');
+    return;
+  }
+
   // Calcular o valor final com a nova fórmula
   var valorFinal = valorBase / (valorBase - (valorBase * taxaTransacao));
   var valorParcela = valorFinal / parcelas;
