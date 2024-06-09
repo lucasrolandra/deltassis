@@ -34,8 +34,8 @@ function calcularValorFinal() {
       taxaTransacao = 0.05; // Taxa padrão
   }
 
-  // Calcular o valor final com acréscimo
-  var valorFinal = valorBase * (1 + taxaTransacao + taxaParcelamento) + tarifaUnica;
+  // Calcular o valor final com a nova fórmula
+  var valorFinal = valorBase / (valorBase - (valorBase * taxaTransacao));
   var valorParcela = valorFinal / parcelas;
 
   // Mostrar os resultados
