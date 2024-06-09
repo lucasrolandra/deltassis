@@ -6,21 +6,19 @@ function calcularValorFinal() {
   var taxaParcelamento = 0;
   var tarifaUnica = 0;
 
+  // Verificar se os valores de entrada são válidos
+  if (isNaN(valorBase) || valorBase <= 0 || isNaN(parcelas) || parcelas <= 0) {
+    alert('Por favor, insira valores válidos.');
+    return;
+  }
+
   // Definir as taxas de transação para Visa com base no número de parcelas
   var taxasVisa = [0, 0.0316, 0.0457, 0.0538, 0.0618, 0.0697, 0.0775, 0.0892, 0.0969, 0.1044, 0.1119, 0.1193, 0.1266];
 
   // Definir a taxa com base na bandeira do cartão
   switch (bandeira) {
     case 'visa':
-      if (parcelas >= 1 && parcelas <= 12) {
-        taxaTransacao = taxasVisa[parcelas];
-      } else {
-        alert('Número de parcelas inválido para Visa. Deve ser entre 1 e 12.');
-        return;
-      }
-      break;
-    case 'mastercard':
-      taxaTransacao = 0.06; // 6% de taxa para MasterCard
+      taxaTransacao = taxasVisa[parcelas];
       break;
     case 'elo':
       taxaTransacao = 0.07; // 7% de taxa para Elo
@@ -33,16 +31,17 @@ function calcularValorFinal() {
     default:
       taxaTransacao = 0.05; // Taxa padrão
   }
-
-  // Evitar divisão por zero
-  if (valorBase * (1 - taxaTransacao) === 0) {
-    alert('Erro: A fórmula resulta em uma divisão por zero.');
-    return;
-  }
-
-  // Calcular o valor final com a nova fórmula
-  var valorFinal = valorBase / (valorBase - (valorBase * taxaTransacao)) / valorBase;
+// Calcula a taxa em reais
+  var taxareais = valorBase * taxaTransacao;
+  // Calcula o valor base - a taxa em reais
+  var valormenostaxa = valorBase - taxareais;
+  // Calcula o divisor
+  var divisor = valormenostaxa / valorBase;
+    // Calcula e mostra o valor a ser pago pelo cliente
+  var valorFinal = valorBase / divisor;
+   // Calcula e mostra o valor a de cada parcela
   var valorParcela = valorFinal / parcelas;
+
 
   // Mostrar os resultados
   document.getElementById('resultado').innerHTML = 'Valor Final: R$ ' + valorFinal.toFixed(2) + '<br>' +
