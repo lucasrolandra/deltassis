@@ -41,7 +41,7 @@ function calcularValorFinal() {
   }
 
   // Calcular o valor final com a nova fórmula
-  var valorFinal = valorBase / (valorBase - (valorBase * taxaTransacao));
+  var valorFinal = (valorBase - (valorBase * taxaTransacao)) / valorBase;
   var valorParcela = valorFinal / parcelas;
 
   // Mostrar os resultados
