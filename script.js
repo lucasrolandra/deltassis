@@ -6,10 +6,18 @@ function calcularValorFinal() {
   var taxaParcelamento = 0;
   var tarifaUnica = 0;
 
+  // Definir as taxas de transação para Visa com base no número de parcelas
+  var taxasVisa = [0, 0.0316, 0.0457, 0.0538, 0.0618, 0.0697, 0.0775, 0.0892, 0.0969, 0.1044, 0.1119, 0.1193, 0.1266];
+
   // Definir a taxa com base na bandeira do cartão
   switch (bandeira) {
     case 'visa':
-      taxaTransacao = 0.05; // 5% de taxa para Visa
+      if (parcelas >= 1 && parcelas <= 12) {
+        taxaTransacao = taxasVisa[parcelas];
+      } else {
+        alert('Número de parcelas inválido para Visa. Deve ser entre 1 e 12.');
+        return;
+      }
       break;
     case 'mastercard':
       taxaTransacao = 0.06; // 6% de taxa para MasterCard
