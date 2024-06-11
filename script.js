@@ -21,7 +21,7 @@ function calcularValorFinal() {
       taxaTransacao = taxasVisa[parcelas];
       break;
     case 'elo':
-      taxaTransacao = 0.07; // 7% de taxa para Elo
+      taxaTransacao = 0,0399; // 3,99% de taxa para Elo
       break;
     case 'banri':
       taxaTransacao = (parcelas <= 6) ? 0.03 : 0.038; // 3% até 6 parcelas, 3.8% acima de 6 parcelas
