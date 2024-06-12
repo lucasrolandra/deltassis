@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Calculadora de Taxas de Cartão</title>
+<script>
+function calcularValorFinal() {
+  var valorInicial = parseFloat(document.getElementById('valorInicial').value);
+  var bandeira = document.getElementById('bandeira').value;
+  var parcelas = parseInt(document.getElementById('parcelas').value);
+  var taxaTransacao = bandeira === 'Visa' ? 2.8 : 3.0;
+  var taxaAntecipacao = bandeira === 'Visa' ? 1.0 : 2.4;
+  var valorFinalComTaxas = valorInicial * (1 + taxaTransacao / 100);
+  valorFinalComTaxas += valorInicial * (taxaAntecipacao / 100) * parcelas;
+  document.getElementById('valorFinal').value = valorFinalComTaxas.toFixed(2);
+}
+</script>
+</head>
+<body>
+
+<h2>Calculadora de Taxas de Cartão</h2>
+
+<label for="valorInicial">Valor Inicial (R$):</label>
+<input type="number" id="valorInicial" placeholder="Insira o valor inicial">
+<br><br>
+
+<label for="bandeira">Bandeira:</label>
+<select id="bandeira">
+  <option value="Visa">Visa</option>
+  <option value="Banricompras">Banricompras</option>
+</select>
+<br><br>
+
+<label for="parcelas">Número de Parcelas:</label>
+<input type="number" id="parcelas" placeholder="Insira o número de parcelas">
+<br><br>
+
+<button onclick="calcularValorFinal()">Calcular Valor Final com Taxas</button>
+<br><br>
+
+<label for="valorFinal">Valor Final com Taxas (R$):</label>
+<input type="text" id="valorFinal" readonly>
+<br><br>
+
+</body>
+</html>
