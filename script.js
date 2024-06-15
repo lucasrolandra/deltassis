@@ -81,8 +81,8 @@ function calcularValorFinal() {
     valorTotalAntecipado -= tarifaUnica; // Subtrair a tarifa única, se for o caso
   }
 
-  // Calcular o valor a ser cobrado do cliente para que, após as taxas, o valor recebido seja igual ao valor base
-  var valorCobradoCliente = (valorBase + tarifaUnica) / (1 - (taxaTransacao + taxaParcelamento * (parcelas * (parcelas + 1) / 2) / parcelas));
+   // Calcular o valor a ser cobrado do cliente para que, após as taxas, o valor recebido seja igual ao valor base
+  var valorCobradoCliente = tarifaUnica + (valorBase / (valorTotalAntecipado / valorBase));
 
   var valorParcelaComTaxas = valorCobradoCliente / parcelas;
 
