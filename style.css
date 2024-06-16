@@ -94,3 +94,27 @@ button:hover {
     padding: 15px;
   }
 }
+.botao-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.botao-discreto {
+  display: inline-block;
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.botao-discreto:hover {
+  background-color: #bbb;
+}
