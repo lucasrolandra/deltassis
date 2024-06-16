@@ -41,7 +41,7 @@ function calcularValorFinal() {
       taxaParcelamento = 0.024; // 2.4% por mês para cada parcela antecipada
       tarifaUnica = 2.00; // Taxa única de R$ 2,00
       break;
-	  case 'diners':
+    case 'diners':
       if (parcelas === 1) {
         taxaTransacao = 0.0319; // 3,19% para 1x
       } else {
@@ -72,7 +72,7 @@ function calcularValorFinal() {
 
   // Calcular o valor antecipado para bandeiras com taxa de antecipação
   var valorTotalAntecipado = valorParcelaSemAntecipacao * parcelas;
-  if (bandeira === 'banri' || (bandeira === 'visa' && parcelas > 1) || (bandeira === 'elo' && parcelas > 1) || (bandeira === 'mastercard' && parcelas > 1)) {
+  if (bandeira === 'banri' || (bandeira === 'visa' && parcelas > 1) || (bandeira === 'diners' && parcelas > 1) || (bandeira === 'elo' && parcelas > 1) || (bandeira === 'mastercard' && parcelas > 1)) {
     valorTotalAntecipado = 0;
     for (var i = 1; i <= parcelas; i++) {
       var valorParcelaAntecipada = valorParcelaSemAntecipacao - (valorParcelaSemAntecipacao * (taxaParcelamento * i));
