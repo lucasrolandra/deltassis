@@ -26,7 +26,7 @@ function calcularValorFinal() {
         taxaParcelamento = 0.0169; // 1,69% por mês para cada parcela antecipada
       }
       break;
-    case 'elo':
+    case 'outros':
       if (parcelas === 1) {
         taxaTransacao = 0.0399; // 3,99% para 1x
       } else if (parcelas >= 2 && parcelas <= 6) {
@@ -37,11 +37,11 @@ function calcularValorFinal() {
         taxaParcelamento = 0.0169; // 1,69% por mês para cada parcela antecipada
       }
       break;
-    case 'banri':
+   /* case 'banri':
       taxaTransacao = (parcelas <= 6) ? 0.03 : 0.038; // 3% até 6 parcelas, 3.8% acima de 6 parcelas
       taxaParcelamento = 0.024; // 2.4% por mês para cada parcela antecipada
       tarifaUnica = 2.00; // Taxa única de R$ 2,00
-      break;
+      break;*/
     case 'diners':
       if (parcelas === 1) {
         taxaTransacao = 0.0319; // 3,19% para 1x
@@ -79,11 +79,11 @@ function calcularValorFinal() {
       var valorParcelaAntecipada = valorParcelaSemAntecipacao - (valorParcelaSemAntecipacao * (taxaParcelamento * i));
       valorTotalAntecipado += valorParcelaAntecipada;
     }
-    valorTotalAntecipado -= tarifaUnica; // Subtrair a tarifa única, se for o caso
+   // valorTotalAntecipado -= tarifaUnica; // Subtrair a tarifa única, se for o caso
   }
 
    // Calcular o valor a ser cobrado do cliente para que, após as taxas, o valor recebido seja igual ao valor base
-  var valorCobradoCliente = tarifaUnica + (valorBase / (valorTotalAntecipado / valorBase));
+  var valorCobradoCliente = valorBase / (valorTotalAntecipado / valorBase);
 
   var valorParcelaComTaxas = valorCobradoCliente / parcelas;
 
