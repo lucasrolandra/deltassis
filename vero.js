@@ -16,32 +16,37 @@ function calcularValorFinal() {
   // Definir a taxa com base na bandeira do cartão
   switch (bandeira) {
     case 'visa':
-      if (parcelas === 1) {
-        taxaTransacao = 0.0315; // 3,15% para 1x
+     if (parcelas === 1) {
+        taxaTransacao = 0.032; // 3,2% para 1x
       } else if (parcelas >= 2 && parcelas <= 6) {
-        taxaTransacao = 0.0209; // 2,09% para 2x a 6x
-        taxaParcelamento = 0.0169; // 1,69% por mês para cada parcela antecipada
+        taxaTransacao = 0.04; // 4% para 2x a 6x
+        taxaParcelamento = 0.024; // 2,4% por mês para cada parcela antecipada
       } else if (parcelas >= 7 && parcelas <= 12) {
-        taxaTransacao = 0.0249; // 2,49% para 7x a 12x
-        taxaParcelamento = 0.0169; // 1,69% por mês para cada parcela antecipada
+        taxaTransacao = 0.046; // 4,6% para 7x a 12x
+        taxaParcelamento = 0.024; // 2,4% por mês para cada parcela antecipada
       }
       break;
     case 'elo':
-      if (parcelas === 1) {
-        taxaTransacao = 0.0399; // 3,99% para 1x
+     if (parcelas === 1) {
+        taxaTransacao = 0.032; // 3,2% para 1x
       } else if (parcelas >= 2 && parcelas <= 6) {
-        taxaTransacao = 0.035; // 3,5% para 2x a 6x
-        taxaParcelamento = 0.0169; // 1,69% por mês para cada parcela antecipada
+        taxaTransacao = 0.04; // 4% para 2x a 6x
+        taxaParcelamento = 0.024; // 2,4% por mês para cada parcela antecipada
       } else if (parcelas >= 7 && parcelas <= 12) {
-        taxaTransacao = 0.0399; // 3,99% para 7x a 12x
-        taxaParcelamento = 0.0169; // 1,69% por mês para cada parcela antecipada
+        taxaTransacao = 0.046; // 4,6% para 7x a 12x
+        taxaParcelamento = 0.024; // 2,4% por mês para cada parcela antecipada
       }
       break;
     case 'banri':
-      taxaTransacao = (parcelas <= 6) ? 0.03 : 0.038; // 3% até 6 parcelas, 3.8% acima de 6 parcelas
-      taxaParcelamento = 0.024; // 2.4% por mês para cada parcela antecipada
-      tarifaUnica = 2.00; // Taxa única de R$ 2,00
-      break;
+      if (parcelas === 1) {
+        taxaTransacao = 0.0250; // 2,5% para 1x
+      } else if (parcelas >= 2 && parcelas <= 6) {
+        taxaTransacao = 0.03; // 3% para 2x a 6x
+        taxaParcelamento = 0.024; // 2,4% por mês para cada parcela antecipada
+      } else if (parcelas >= 7 && parcelas <= 12) {
+        taxaTransacao = 0.038; // 3,8% para 7x a 12x
+        taxaParcelamento = 0.024; // 2,4% por mês para cada parcela antecipada
+      }
     case 'diners':
       if (parcelas === 1) {
         taxaTransacao = 0.0319; // 3,19% para 1x
@@ -52,13 +57,13 @@ function calcularValorFinal() {
       break;
     case 'mastercard':
       if (parcelas === 1) {
-        taxaTransacao = 0.0316; // 3,16% para 1x
+        taxaTransacao = 0.032; // 3,2% para 1x
       } else if (parcelas >= 2 && parcelas <= 6) {
-        taxaTransacao = 0.0209; // 2,09% para 2x a 6x
-        taxaParcelamento = 0.0169; // 1,69% por mês para cada parcela antecipada
+        taxaTransacao = 0.04; // 4% para 2x a 6x
+        taxaParcelamento = 0.024; // 2,4% por mês para cada parcela antecipada
       } else if (parcelas >= 7 && parcelas <= 12) {
-        taxaTransacao = 0.0249; // 2,49% para 7x a 12x
-        taxaParcelamento = 0.0169; // 1,69% por mês para cada parcela antecipada
+        taxaTransacao = 0.046; // 4,6% para 7x a 12x
+        taxaParcelamento = 0.024; // 2,4% por mês para cada parcela antecipada
       }
 	  break;
     default:
