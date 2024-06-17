@@ -81,7 +81,7 @@ function calcularValorFinal() {
 
   // Calcular o valor antecipado para bandeiras com taxa de antecipação
   var valorTotalAntecipado = valorParcelaSemAntecipacao * parcelas;
-  if (bandeira === 'banri' && parcelas > 1) || (bandeira === 'visa' && parcelas > 1) || (bandeira === 'diners' && parcelas > 1) || (bandeira === 'elo' && parcelas > 1) || (bandeira === 'mastercard' && parcelas > 1)) {
+  if ((bandeira === 'banri' && parcelas > 1) || (bandeira === 'visa' && parcelas > 1) || (bandeira === 'diners' && parcelas > 1) || (bandeira === 'elo' && parcelas > 1) || (bandeira === 'mastercard' && parcelas > 1)) {
     valorTotalAntecipado = 0;
     for (var i = 1; i <= parcelas; i++) {
       var valorParcelaAntecipada = valorParcelaSemAntecipacao - (valorParcelaSemAntecipacao * (taxaParcelamento * i));
