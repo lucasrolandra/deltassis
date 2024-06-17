@@ -39,13 +39,16 @@ function calcularValorFinal() {
       break;
     case 'banri':
       if (parcelas === 1) {
-        taxaTransacao = 0.0250; // 2,5% para 1x
+        taxaTransacao = 0.0484; // 4,74% (2,5% transação e 2,4% antecipação para 1x)
+	tarifaUnica = 2;      
       } else if (parcelas >= 2 && parcelas <= 6) {
         taxaTransacao = 0.03; // 3% para 2x a 6x
         taxaParcelamento = 0.024; // 2,4% por mês para cada parcela antecipada
+	tarifaUnica = 2;
       } else if (parcelas >= 7 && parcelas <= 12) {
         taxaTransacao = 0.038; // 3,8% para 7x a 12x
         taxaParcelamento = 0.024; // 2,4% por mês para cada parcela antecipada
+	tarifaUnica = 2;
       }
     case 'diners':
       if (parcelas === 1) {
