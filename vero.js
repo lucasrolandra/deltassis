@@ -69,8 +69,8 @@ function calcularValorFinal() {
         taxaParcelamento = 0.024; // 2,4% por mês para cada parcela antecipada
       }
 	  break;
-    default:
-      taxaTransacao = 0.05; // Taxa padrão
+  /*  default:
+      taxaTransacao = 0.05; // Taxa padrão */
   }
 
   // Calcular o valor base após a taxa de transação
