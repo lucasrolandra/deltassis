@@ -16,48 +16,41 @@ function calcularValorFinal() {
   // Definir a taxa com base na bandeira do cartão
   switch (bandeira) {
     case 'visa':
-	    taxaParcelamento = 0.0144; // 1,44% por mês para cada parcela antecipada
+	taxaParcelamento = 0.0144; // 1,44% por mês para cada parcela antecipada
         if (parcelas === 1) {
         taxaTransacao = 0.0199; // 1,99% para 1x
-	  } else if (parcelas >= 2 && parcelas <= 6) {
+      } else if (parcelas >= 2 && parcelas <= 6) {
         taxaTransacao = 0.0237; // 2,37% para 2x a 6x
       } else if (parcelas >= 7 && parcelas <= 12) {
         taxaTransacao = 0.0267; // 2,67% para 7x a 12x
       }
       break;
     case 'outros':
+	taxaParcelamento = 0.0144; // 1,44% por mês para cada parcela antecipada
       if (parcelas === 1) {
         taxaTransacao = 0.0399; // 3,99% para 1x
       } else if (parcelas >= 2 && parcelas <= 6) {
         taxaTransacao = 0.035; // 3,5% para 2x a 6x
-        taxaParcelamento = 0.0169; // 1,69% por mês para cada parcela antecipada
       } else if (parcelas >= 7 && parcelas <= 12) {
         taxaTransacao = 0.0399; // 3,99% para 7x a 12x
-        taxaParcelamento = 0.0169; // 1,69% por mês para cada parcela antecipada
       }
       break;
-   /* case 'banri':
-      taxaTransacao = (parcelas <= 6) ? 0.03 : 0.038; // 3% até 6 parcelas, 3.8% acima de 6 parcelas
-      taxaParcelamento = 0.024; // 2.4% por mês para cada parcela antecipada
-      tarifaUnica = 2.00; // Taxa única de R$ 2,00
-      break;*/
     case 'diners':
+	taxaParcelamento = 0.0144; // 1,44% por mês para cada parcela antecipada
       if (parcelas === 1) {
         taxaTransacao = 0.0319; // 3,19% para 1x
       } else {
         taxaTransacao = 0.0379; // 3,79% para 2x a 12x
-        taxaParcelamento = 0.0169; // 1,69% por mês para cada parcela antecipada
       } 
       break;
     case 'mastercard':
+        taxaParcelamento = 0.0144; // 1,44% por mês para cada parcela antecipada
      if (parcelas === 1) {
         taxaTransacao = 0.0199; // 1,99% para 1x
       } else if (parcelas >= 2 && parcelas <= 6) {
         taxaTransacao = 0.0237; // 2,37% para 2x a 6x
-        taxaParcelamento = 0.0144; // 1,44% por mês para cada parcela antecipada
       } else if (parcelas >= 7 && parcelas <= 12) {
         taxaTransacao = 0.0267; // 2,67% para 7x a 12x
-        taxaParcelamento = 0.0144; // 1,44% por mês para cada parcela antecipada
       }
 	  break;
     default:
@@ -70,18 +63,14 @@ function calcularValorFinal() {
   // Calcular o valor de cada parcela sem considerar a antecipação
   var valorParcelaSemAntecipacao = valorMenosTaxaTransacao / parcelas;
 
-  // Calcular o valor antecipado para bandeiras com taxa de antecipação
+  // Calcular o valor antecipado 
   var valorTotalAntecipado = valorParcelaSemAntecipacao * parcelas;
-   /*if (bandeira === 'banri' || (bandeira === 'visa' && parcelas > 1) || (bandeira === 'diners' && parcelas > 1) || (bandeira === 'elo' && parcelas > 1) || (bandeira === 'mastercard' && parcelas > 1)) {*/
-    valorTotalAntecipado = 0;
+      valorTotalAntecipado = 0;
     for (var i = 1; i <= parcelas; i++) {
       var valorParcelaAntecipada = valorParcelaSemAntecipacao - (valorParcelaSemAntecipacao * (taxaParcelamento * i));
       valorTotalAntecipado += valorParcelaAntecipada;
     }
-   // valorTotalAntecipado -= tarifaUnica; // Subtrair a tarifa única, se for o caso
-  //}
-
-   // Calcular o valor a ser cobrado do cliente para que, após as taxas, o valor recebido seja igual ao valor base
+  // Calcular o valor a ser cobrado do cliente para que, após as taxas, o valor recebido seja igual ao valor base
   var valorCobradoCliente = valorBase / (valorTotalAntecipado / valorBase);
 
   var valorParcelaComTaxas = valorCobradoCliente / parcelas;
