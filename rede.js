@@ -16,8 +16,7 @@ function calcularValorFinal() {
   // Definir a taxa com base na bandeira do cartão
   switch (bandeira) {
     case 'visa':
-      taxaParcelamento = 0.0144; // 1,44% por mês para cada parcela antecipada
-      if (parcelas === 1) {
+        if (parcelas === 1) {
         taxaTransacao = 0.0199; // 1,99% para 1x
       } else if (parcelas >= 2 && parcelas <= 6) {
         taxaTransacao = 0.0237; // 2,37% para 2x a 6x
@@ -26,6 +25,7 @@ function calcularValorFinal() {
         taxaTransacao = 0.0267; // 2,67% para 7x a 12x
         /*taxaParcelamento = 0.0144; // 1,44% por mês para cada parcela antecipada*/
       }
+      taxaParcelamento = 0.0144; // 1,44% por mês para cada parcela antecipada	  
       break;
     case 'outros':
       if (parcelas === 1) {
