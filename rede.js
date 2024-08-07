@@ -57,7 +57,7 @@ function calcularValorFinal() {
 
   var valorParcelaComTaxas = valorCobradoCliente / parcelas;
 
-  let jurosadicionados = (valorCobradoCliente / valorBase) - 1;
+  let jurosadicionados = valorCobradoCliente / valorBase;
 
   document.getElementById('resultado').innerHTML = 'Valor final: R$ ' + valorCobradoCliente.toFixed(2) + '<br>' +
                                                    'Valor de cada parcela: R$ ' + valorParcelaComTaxas.toFixed(2) + '<br>' +
