@@ -35,25 +35,7 @@ function calcularValorFinal() {
         taxaTransacao = 0.0399; // 3,99% para 7x a 12x
       }
       break;
-    case 'diners':
-	taxaParcelamento = 0.0144; // 1,44% por mês para cada parcela antecipada
-      if (parcelas === 1) {
-        taxaTransacao = 0.0319; // 3,19% para 1x
-      } else {
-        taxaTransacao = 0.0379; // 3,79% para 2x a 12x
-      } 
-      break;
-    case 'mastercard':
-        taxaParcelamento = 0.0144; // 1,44% por mês para cada parcela antecipada
-     if (parcelas === 1) {
-        taxaTransacao = 0.0199; // 1,99% para 1x
-      } else if (parcelas >= 2 && parcelas <= 6) {
-        taxaTransacao = 0.0237; // 2,37% para 2x a 6x
-      } else if (parcelas >= 7 && parcelas <= 12) {
-        taxaTransacao = 0.0267; // 2,67% para 7x a 12x
-      }
-	  break;
-    default:
+      default:
       taxaTransacao = 0.05; // Taxa padrão
   }
 
@@ -75,7 +57,10 @@ function calcularValorFinal() {
 
   var valorParcelaComTaxas = valorCobradoCliente / parcelas;
 
+  var jurosadicionados = (valorCobradoCliente / valorBase) - 1;
+
   document.getElementById('resultado').innerHTML = 'Valor final: R$ ' + valorCobradoCliente.toFixed(2) + '<br>' +
                                                    'Valor de cada parcela: R$ ' + valorParcelaComTaxas.toFixed(2) + '<br>' +
+	                                           'Juros adicionados: R$ ' + jurosadicionados.toFixed(2) + '<br>' +
                                                    'Valor antecipado sem repasse: R$ ' + valorTotalAntecipado.toFixed(2);
 }
