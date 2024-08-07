@@ -57,10 +57,10 @@ function calcularValorFinal() {
 
   var valorParcelaComTaxas = valorCobradoCliente / parcelas;
 
-  var jurosadicionados = (valorCobradoCliente / valorBase) - 1;
+  let jurosadicionados = (valorCobradoCliente / valorBase) - 1;
 
   document.getElementById('resultado').innerHTML = 'Valor final: R$ ' + valorCobradoCliente.toFixed(2) + '<br>' +
                                                    'Valor de cada parcela: R$ ' + valorParcelaComTaxas.toFixed(2) + '<br>' +
-	                                           'Juros adicionados: R$ ' + jurosadicionados.toFixed(2) + '<br>' +
+	                                           'Juros adicionados: % ' + jurosadicionados.toFixed(2) + '<br>' +
                                                    'Valor antecipado sem repasse: R$ ' + valorTotalAntecipado.toFixed(2);
 }
