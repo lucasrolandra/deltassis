@@ -61,6 +61,6 @@ function calcularValorFinal() {
 
   document.getElementById('resultado').innerHTML = 'Valor final: R$ ' + valorCobradoCliente.toFixed(2) + '<br>' +
                                                    'Valor de cada parcela: R$ ' + valorParcelaComTaxas.toFixed(2) + '<br>' +
-	                                           'Juros adicionados: % ' (jurosadicionados * 100).toFixed(2) + '%<br>' +
+	                                           'Juros adicionados: ' + (jurosadicionados * 100).toFixed(2) + '%<br>' +
                                                    'Valor antecipado sem repasse: R$ ' + valorTotalAntecipado.toFixed(2);
 }
