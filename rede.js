@@ -28,11 +28,11 @@ function calcularValorFinal() {
     case 'outros':
 	taxaParcelamento = 0.0144; // 1,44% por mês para cada parcela antecipada
       if (parcelas === 1) {
-        taxaTransacao = 0.0399; // 3,99% para 1x
+        taxaTransacao = 0.0279; // 2,79% para 1x
       } else if (parcelas >= 2 && parcelas <= 6) {
-        taxaTransacao = 0.035; // 3,5% para 2x a 6x
+        taxaTransacao = 0.0317; // 3,17% para 2x a 6x
       } else if (parcelas >= 7 && parcelas <= 12) {
-        taxaTransacao = 0.0399; // 3,99% para 7x a 12x
+        taxaTransacao = 0.0347; // 3,47% para 7x a 12x
       }
       break;
       default:
